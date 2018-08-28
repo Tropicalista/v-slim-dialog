@@ -12,9 +12,10 @@
             .v-dialog-input(:is='item.prompt.component' v-model='item.prompt.value' ref='prompt' @input='onPrompt')
             .prompt-error-message(v-if='!valid') {{ item.prompt.invalidMessage }}
       .v-dialog-footer
-        a.v-dialog-btn.v-dialog-btn-danger(@click='onClose(false)' v-if='item.cancelLabel')
-          | {{ item.cancelLabel }}
-        a.v-dialog-btn.success(@click='onOk', :class='{disabled: !valid}', :disabled='!valid') {{ item.okLabel }}
+        .ui.buttons
+          button.ui.button(@click='onClose(false)', v-if='item.cancelLabel') {{item.cancelLabel}}
+          .or
+          button.ui.positive.button(@click='onOk', :class='{disabled: !valid}', :disabled='!valid') {{item.okLabel}}
 </template>
 
 <script>
